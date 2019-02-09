@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/blankLevel.png</file>
+        <file>res/catFlap.png</file>
+        <file>res/chirpy.png</file>
+        <file>res/exit.png</file>
+        <file>res/flower.png</file>
+        <file>res/mirror.png</file>
+        <file>res/floor.png</file>
+        <file>res/empty.png</file>
+    </qresource>
+</RCC>
