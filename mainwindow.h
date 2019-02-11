@@ -27,7 +27,6 @@ private:
     Ui::MainWindow *ui;
     customScene *scene;
     QGraphicsPixmapItem *backImg;
-    QFile *levelFile;
     levelLoader *level;
 
 private slots:

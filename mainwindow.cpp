@@ -23,14 +23,29 @@ void MainWindow::slot_gridCheck(){
 
 void MainWindow::slot_openFile(){
 
-    //we contain some sort of level data
-    if(level->floorQItems[0][0])
-    {
-        //call function to clear levels
-    }
-
     QString fileName = QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Binary (*.bin)"));
+
     if(!fileName.isNull()){
+
+        if(level->floorQItems[0][0])
+        {
+            scene->clear();
+            for(int i=0; i<level->floorQItems.size(); i++){
+                for (int k=0; k<level->floorQItems[0].size();k++)
+                {
+                    level->floorQItems[i][k]=nullptr;
+                }
+            }
+
+            //since level editor does not support background editing yet we just load a default background png from level 1
+            //this is also a bit ugly and will need to be refactored when background/pallete editing is added
+            QImage levelBackgroundImg(":/res/blankLevel.png");
+            levelBackgroundImg = levelBackgroundImg.scaled(levelBackgroundImg.width()*2,levelBackgroundImg.height()*2,Qt::KeepAspectRatio);
+            backImg = new QGraphicsPixmapItem(QPixmap::fromImage(levelBackgroundImg));
+            scene->addItem(backImg);
+
+        }
+
         level->loadLevel(fileName.toLatin1().data());
         level->toQItems();
 
@@ -74,4 +89,6 @@ void MainWindow::populateScene(){
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete scene;
+    delete level;
 }

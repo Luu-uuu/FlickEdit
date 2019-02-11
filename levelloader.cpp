@@ -12,9 +12,13 @@ void levelLoader::setLevelData(std::vector< std::vector<unsigned char> > levelDa
 
 //convert leveldata to QtGraphic Items to display in editor. currently only does PLATFORM/EMPTY data
 void levelLoader::toQItems(){
+
     unsigned int levelIndex = 0;
     unsigned char numberOfTiles = 0;
     unsigned int levelSize = floorQItems.size()*floorQItems[0].size();
+
+    //
+
 
     for (std::vector<unsigned char>::const_iterator i=levelData[PLATFORMS].begin(); i<levelData[PLATFORMS].end();i++){
         //qDebug() << *i <<endl;
@@ -295,4 +299,3 @@ bool levelLoader::saveLevel(std::string const& filepath){
 std::vector< std::vector<unsigned char> > levelLoader::getLevelData(){
     return levelData;
 }
-
